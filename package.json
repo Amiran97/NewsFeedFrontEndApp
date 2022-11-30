@@ -22,6 +22,7 @@
     "@ng-bootstrap/ng-bootstrap": "^12.1.2",
     "@popperjs/core": "^2.10.2",
     "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.2",
     "lodash": "^4.17.21",
     "ng-cli-pug-loader": "^0.2.2",
     "pug": "^3.0.2",
