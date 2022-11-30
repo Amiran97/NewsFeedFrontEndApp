@@ -4,7 +4,7 @@ nav.navbar.bg-light
       img(src='assets/logo.svg' alt='Tangram' width='50' height='50')
     .container
       form.d-flex.justify-content-center(role='search')
-        input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
+        input.form-control.me-2(type='search' placeholder='Search' aria-label='Search' , [formControl]="search", (input)='searchPosts()' )
     button.btn.btn-primary(type='button') Log In
 
       
