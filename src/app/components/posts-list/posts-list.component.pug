@@ -1,3 +1,4 @@
+.posts(*ngIf="postsList$ | async as postsList")
+  .post-item(*ngFor='let post of postsList')
+    app-post-item([post]='post')
 
-
-app-post-item

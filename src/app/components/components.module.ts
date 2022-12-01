@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 import { HeaderComponent } from "./header/header.component";
 import { PostsListComponent } from "./posts-list/posts-list.component";
-import { PostItemComponent } from "./posts-list/post-item/post-item.component";
+import { PostItemComponent } from "./post-item/post-item.component";
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule],
