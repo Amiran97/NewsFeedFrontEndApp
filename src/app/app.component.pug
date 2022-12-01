@@ -1,2 +1,4 @@
 app-header
-app-side-bar
+app-side-bar([ngClass]="{'app-side-nav-open': isSideNavOpen}", (sideNavToggled)='isSideNavOpen = $event' )
+.display-area.p-3([ngClass]="{'display-area-shrink': isSideNavOpen}")
+  p.fs-1.fw-bold.fst-italic Main Area 
