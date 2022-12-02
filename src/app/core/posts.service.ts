@@ -17,6 +17,7 @@ export class PostsService {
         "https://static.clubs.nfl.com/image/private/t_editorial_landscape_8_desktop_mobile/f_auto/raiders/dxhgnz84w8ezkk6hbgqn.jpg",
       countComments: 12,
       likes: 35,
+      rating: 59,
       createDate: "12.05.2021",
     },
     {
@@ -27,6 +28,7 @@ export class PostsService {
       postImg: "https://miro.medium.com/max/1145/1*nuGWz5wZpd3Arvt9aJkFOA.png",
       countComments: 5,
       likes: 18,
+      rating: 17,
       createDate: "16.08.2021",
     },
     {
@@ -36,6 +38,7 @@ export class PostsService {
         "In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive",
       countComments: 89,
       likes: 256,
+      rating: 35,
       createDate: "02.01.2021",
     },
     {
@@ -47,6 +50,7 @@ export class PostsService {
         "https://static.clubs.nfl.com/image/private/t_new_photo_album/f_auto/raiders/oknhlbaclndou7uphkva.jpg",
       countComments: 26,
       likes: 102,
+      rating: 10,
       createDate: "28.08.2022",
     },
     {
@@ -58,6 +62,7 @@ export class PostsService {
         "https://static.clubs.nfl.com/image/private/t_new_photo_album/f_auto/raiders/w7mfebiro546qml4dgqm.jpg",
       countComments: 19,
       likes: 65,
+      rating: 15,
       createDate: "12.04.2022",
     },
     {
@@ -69,6 +74,7 @@ export class PostsService {
         "https://static.clubs.nfl.com/image/private/t_editorial_landscape_8_desktop_mobile/f_auto/raiders/dxhgnz84w8ezkk6hbgqn.jpg",
       countComments: 12,
       likes: 35,
+      rating: 22,
       createDate: "12.05.2021",
     },
     {
@@ -79,6 +85,7 @@ export class PostsService {
       postImg: "https://miro.medium.com/max/1145/1*nuGWz5wZpd3Arvt9aJkFOA.png",
       countComments: 5,
       likes: 18,
+      rating: 7,
       createDate: "16.08.2021",
     },
     {
@@ -88,6 +95,7 @@ export class PostsService {
         "In a professional context it often happens that private or corporate clients corder a publication to be made and presented with the actual content still not being ready. Think of a news blog that's filled with content hourly on the day of going live. However, reviewers tend to be distracted by comprehensible content, say, a random text copied from a newspaper or the internet. The are likely to focus on the text, disregarding the layout and its elements. Besides, random text risks to be unintendedly humorous or offensive",
       countComments: 89,
       likes: 256,
+      rating: 1,
       createDate: "02.01.2021",
     },
     {
@@ -99,6 +107,7 @@ export class PostsService {
         "https://static.clubs.nfl.com/image/private/t_new_photo_album/f_auto/raiders/oknhlbaclndou7uphkva.jpg",
       countComments: 26,
       likes: 102,
+      rating: 12,
       createDate: "28.08.2022",
     },
   ];

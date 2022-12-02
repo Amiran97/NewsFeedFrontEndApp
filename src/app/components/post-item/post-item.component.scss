@@ -1,4 +1,47 @@
-.bi {
-  width: 25px;
-  height: 25px;
+.post-card-wrapper {
+  .post-card {
+    border-radius: 5px;
+    background-color: rgb(236, 236, 236);
+
+    .post-card-header {
+      align-items: center;
+      padding: 0.8rem;
+
+      p {
+        color: rgb(130, 130, 130);
+      }
+    }
+
+    .post-card-body {
+      padding: 0.8rem;
+
+      .content-image {
+        margin: -0.8rem;
+      }
+    }
+
+    .post-card-footer {
+      background-color: rgb(98, 98, 98);
+      color: white;
+
+      .footer-comments {
+        cursor: pointer;
+      }
+
+      .footer-likes {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .post-card-rating {
+    font-size: 26px;
+    width: 50px;
+    height: 120px;
+    text-align: center;
+
+    i {
+      width: 28px;
+    }
+  }
 }

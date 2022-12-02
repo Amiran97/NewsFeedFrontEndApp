@@ -5,5 +5,6 @@ export interface Post {
   postImg?: string | File;
   countComments: number;
   likes: number;
+  rating: number;
   createDate: string | Date;
 }

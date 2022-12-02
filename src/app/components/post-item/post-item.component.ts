@@ -11,4 +11,16 @@ export class PostItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+  ratingUp() {
+    console.log("Rating up");
+  }
+  ratingDown() {
+    console.log("Rating down");
+  }
+  likePost() {
+    console.log("Like Post");
+  }
+  commentPost() {
+    console.log("Comment Post");
+  }
 }
