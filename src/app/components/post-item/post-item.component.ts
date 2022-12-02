@@ -3,7 +3,7 @@ import { Post } from "src/app/interfaces/post";
 
 @Component({
   selector: "app-post-item",
-  templateUrl: "./post-item.component.html",
+  templateUrl: "./post-item.component.pug",
   styleUrls: ["./post-item.component.scss"],
 })
 export class PostItemComponent implements OnInit {

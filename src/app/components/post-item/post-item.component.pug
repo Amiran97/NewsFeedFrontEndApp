@@ -1,0 +1,19 @@
+.post-card(*ngIf='post' style='max-width: 700px')
+  .post-card-header
+    h6 {{ post.nickname }}
+    p {{ post.createDate }}
+  .post-card-body
+    .body-title
+      h2 {{ post.title }}
+    .body-content
+      .content-text
+        p {{ post.postContent }}
+      .content-image
+        <img [src]=post?.postImg class="card-img-top" alt="..." />
+    .post-card-footer
+      .footer-comments
+        i.bi.bi-chat-left-text-fill
+        span {{ post.countComments }}
+      .footer-likes
+        i.bi.bi-heart-fill
+        span {{ post.likes }}
