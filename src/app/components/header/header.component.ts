@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -7,12 +8,15 @@ import { FormControl } from "@angular/forms";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   search = new FormControl("");
   ngOnInit() {}
 
   searchPosts() {
     console.log(this.search.value);
+  }
+  navigate() {
+    this.router.navigate(["login"]);
   }
 }

@@ -6,18 +6,12 @@ import { RegisterComponent } from "./components/register/register.component";
 
 const routes: Routes = [
   {
-    path: "",
-    component: AppComponent,
-    children: [
-      {
-        path: "login",
-        component: LoginComponent,
-      },
-      {
-        path: "signup",
-        component: RegisterComponent,
-      },
-    ],
+    path: "login",
+    component: LoginComponent,
+  },
+  {
+    path: "signup",
+    component: RegisterComponent,
   },
 ];
 
