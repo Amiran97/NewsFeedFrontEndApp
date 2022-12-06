@@ -16,7 +16,4 @@ export class HeaderComponent implements OnInit {
   searchPosts() {
     console.log(this.search.value);
   }
-  navigate() {
-    this.router.navigate(["login"]);
-  }
 }

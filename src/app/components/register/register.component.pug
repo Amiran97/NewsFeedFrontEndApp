@@ -1,0 +1,44 @@
+.signUp
+  h2 Sign up to Tangram
+  .card
+    .card-body
+      .mb-3(*ngIf='registerForm')
+        form( [formGroup]='registerForm', (ngSubmit)='onSubmit()')
+          .userName
+            label.form-label Enter your username 
+            input.form-control(formControlName='userName' type='text')
+          .error-message(*ngIf="\
+          registerForm.get('userName')?.invalid &&\
+          registerForm.get('userName')?.dirty &&\
+          registerForm.get('userName')?.touched\
+          ")
+            p.error-mes *The length must be at least 3 characters.
+          .email
+            label.form-label Enter your email 
+            input.form-control(formControlName='email' type='email')
+          .error-message(*ngIf="\
+          registerForm.get('email')?.invalid &&\
+          registerForm.get('email')?.dirty &&\
+          registerForm.get('email')?.touched\
+          ")
+            p.error-mes *The email must be valid.
+          .password
+            label.form-label Create a password 
+            input.form-control(formControlName='password' type='password')
+          .error-message(*ngIf="\
+          registerForm.get('password')?.invalid &&\
+          registerForm.get('password')?.dirty &&\
+          registerForm.get('password')?.touched\
+          ")
+            p.error-mes *The length must be at least 3 characters.
+          .confPassword
+            label.form-label Enter your password for verify
+            input.form-control(formControlName='confPassword' type='password')
+          .error-message(*ngIf="\
+          registerForm.get('confPassword')?.invalid &&\
+          registerForm.get('confPassword')?.dirty &&\
+          registerForm.get('confPassword')?.touched\
+          ")
+            p.error-mes *The length must be at least 3 characters.
+          .button
+            button.btn.btn-success(type='submit') Sign up

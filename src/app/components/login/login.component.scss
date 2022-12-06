@@ -1,0 +1,33 @@
+.login {
+  margin: 3rem auto;
+  max-width: 500px;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+
+  .email {
+    margin-bottom: 1rem;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+
+    .btn-success {
+      width: 200px;
+      margin: 1.5rem 0;
+    }
+  }
+
+  .signup {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
