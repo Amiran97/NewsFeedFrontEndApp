@@ -1,0 +1,55 @@
+.border-black {
+  border: 1px solid #000;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.side-nav-content {
+  width: 230px;
+  margin: 10px 10px 0;
+
+  .nav-list {
+    cursor: pointer;
+    list-style: none;
+    height: 100%;
+    padding: 0;
+    margin-bottom: 0;
+
+    .nav-list-item {
+      display: flex;
+      align-items: center;
+      height: 50px;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+      }
+
+      i {
+        font-size: 24px;
+        height: 25px;
+        width: 25px;
+        margin: 0 15px 0 10px;
+        text-align: center;
+        line-height: 25px;
+      }
+
+      span {
+        margin-left: 2rem;
+        width: 120px;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  .toggler {
+    font-size: 24px;
+    line-height: 25px;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+
+}

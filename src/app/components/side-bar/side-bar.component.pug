@@ -1,0 +1,12 @@
+.side-nav-content
+  ul.nav-list
+    li.nav-list-item.toggler((click)='sideNavToggle()')
+      a
+        i.bi.bi-arrow-right(*ngIf='!isSideNavOpen; else hideNav')
+        ng-template(#hideNav)
+          i.bi.bi-arrow-left
+        span Hide
+    li.nav-list-item(*ngFor='let item of list')
+      a(href='#')
+        i([class]='item.icon')
+          span {{ item.name }}         
