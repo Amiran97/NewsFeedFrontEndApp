@@ -1,6 +1,7 @@
 .signUp {
   margin: 3rem auto;
   max-width: 500px;
+  margin-top: 90px;
 
   h2 {
     margin-bottom: 2rem;
@@ -20,6 +21,11 @@
     .btn-success {
       width: 200px;
       margin: 1.5rem 0;
+    }
+
+    .btn-primary {
+      width: 200px;
+      margin: 0;
     }
   }
 }
