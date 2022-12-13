@@ -1,0 +1,27 @@
+.post-card-wrapper.d-flex.flex-row-reverse.mt-3.mb-5(*ngIf='post')
+  .post-card(style='max-width: 700px')
+    .post-card-header.d-flex.align-items-center
+      h6.p-1.m-0 author: {{ post.nickname }}
+      p.p-1.m-0.ms-5 {{ post.createDate }}
+    .post-card-body
+      .body-title.mb-2
+        h2 {{ post.title }}
+      .body-content
+        .content-text
+          p {{ post.postContent }}
+        .content-image(*ngIf='post.postImg')
+          <img [src]=post.postImg class="card-img-top" alt="..." />
+    .post-card-footer.d-flex.py-2.pt-2
+      .footer-comments.mx-3.d-flex.align-items-center((click)='commentPost()')
+        i.bi.bi-chat-left-text-fill.me-2
+        span {{ post.countComments }}
+      .footer-likes.d-flex.align-items-center((click)='likePost()')
+        i.bi.bi-heart-fill.me-2
+        span {{ post.likes }}
+  .post-card-rating.me-3.mt-2
+    button.btn.btn-light((click)='ratingUp()')
+      i.bi.bi-caret-up-fill
+    p.my-1.p-0 {{post.rating}}
+    button.btn.btn-light((click)='ratingDown()')
+      i.bi.bi-caret-down-fill
+    
