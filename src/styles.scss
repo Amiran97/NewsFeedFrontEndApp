@@ -9,3 +9,17 @@
 body {
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
 }
+
+.login, .register {
+  input.ng-valid {
+    border-left: 5px solid #42A948;
+  }
+
+  input.ng-invalid {
+    border-left: 5px solid #a94442;
+  }
+}
+
+.cur-pointer {
+  cursor: pointer;
+}

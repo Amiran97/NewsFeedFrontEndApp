@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:5000'
+  API_URL: 'http://localhost:5000/api/v1',
+  ACCOUNT_API_URL: 'Auth',
+  encryptSecretKey: 'd3b2cc0c-db8c-4dec-a25a-e1179ac30025'
 };
 
 /*

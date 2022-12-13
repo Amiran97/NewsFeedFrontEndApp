@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import { HeaderComponent } from "./components/header/header.component";
 import { SideBarComponent } from "./components/side-bar/side-bar.component";
+import { AccountMenuComponent } from "./components/account-menu/account-menu.component";
 
 
 @NgModule({
@@ -15,6 +16,7 @@ import { SideBarComponent } from "./components/side-bar/side-bar.component";
   declarations: [
     HeaderComponent,
     SideBarComponent,
+    AccountMenuComponent
   ],
   exports: [
     HeaderComponent,
