@@ -1,0 +1,4 @@
+.posts(*ngIf="postsList$ | async as postsList")
+  .post-item.d-flex.justify-content-center(*ngFor='let post of postsList')
+    app-post-item([post]='post')
+

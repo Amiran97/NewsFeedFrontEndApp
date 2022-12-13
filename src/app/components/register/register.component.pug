@@ -1,0 +1,48 @@
+.signUp
+  h2.text-center Sign up to TangramFeed
+  .card
+    .card-body
+      .mb-3(*ngIf='registerForm')
+        form( [formGroup]='registerForm', (ngSubmit)='onSubmit()')
+          .userName
+            label.form-label Username 
+            input.form-control(formControlName='userName' type='text' placeholder='Enter username')
+          .error-message(*ngIf="\
+          registerForm.get('userName')?.invalid &&\
+          registerForm.get('userName')?.dirty &&\
+          registerForm.get('userName')?.touched\
+          ")
+            p.error-mes *The length must be at least 3 characters.
+          .email
+            label.form-label Email 
+            input.form-control(formControlName='email' type='email' placeholder='Enter email')
+          .error-message(*ngIf="\
+          registerForm.get('email')?.invalid &&\
+          registerForm.get('email')?.dirty &&\
+          registerForm.get('email')?.touched\
+          ")
+            p.error-mes *The email must be valid.
+          .password
+            label.form-label Password 
+            input.form-control(formControlName='password' type='password' placeholder='Enter password')
+          .error-message(*ngIf="\
+          registerForm.get('password')?.invalid &&\
+          registerForm.get('password')?.dirty &&\
+          registerForm.get('password')?.touched\
+          ")
+            p.error-mes *The length must be at least 3 characters.
+          .confPassword
+            label.form-label Confirm password
+            input.form-control(formControlName='confPassword' type='password' placeholder='Enter confirm password for verify')
+          .error-message(*ngIf="\
+          registerForm.get('confPassword')?.invalid &&\
+          registerForm.get('confPassword')?.dirty &&\
+          registerForm.get('confPassword')?.touched\
+          ")
+            p.error-mes *The length must be at least 3 characters.
+          .button
+            button.btn.btn-success(type='submit') Sign up
+          .signin
+            p 
+              | Do you have account? 
+              a([routerLink]="['/signin']") Sign in.

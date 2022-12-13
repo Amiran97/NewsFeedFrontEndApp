@@ -1,1 +1,5 @@
-h1 Hello World!
+app-header
+main
+  router-outlet
+app-side-bar([ngClass]="{'app-side-nav-open': isSideNavOpen}", (sideNavToggled)='isSideNavOpen = $event' )
+.display-area.p-3([ngClass]="{'display-area-shrink': isSideNavOpen}")

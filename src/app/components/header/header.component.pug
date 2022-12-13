@@ -1,0 +1,9 @@
+nav.navbar.bg-light
+  .container-fluid
+    a.navbar-brand([routerLink]="['/']").ms-4.p-0
+      img(src='assets/logo.svg' alt='Tangram' width='50' height='50')
+    .container
+      form.d-flex.justify-content-center(role='search')
+        input.form-control.me-2(type='search' placeholder='Search' aria-label='Search' , [formControl]="search", (input)='searchPosts()' )
+    button.btn.btn-primary(type='button', [routerLink]="['/signin']") Log in
+      
