@@ -1,13 +1,13 @@
 .login
-  h2 Sign in to Tangram
+  h2.text-center Sign in to TangramFeed
   .card
     .card-body
       .mb-3(*ngIf='authForm')
         form( [formGroup]='authForm' , (ngSubmit)='onSubmit()')
           .email
             label.form-label(for='exampleFormControlInput1')
-              | Username or email address
-            input.form-control(formControlName='login' type='email' placeholder='Enter your login or email')
+              | Email address
+            input.form-control(formControlName='login' type='email' placeholder='Enter your email')
           .error-message(*ngIf="\
           authForm.get('login')?.invalid &&\
           authForm.get('login')?.dirty &&\
@@ -19,14 +19,14 @@
               | Password
             input.form-control(formControlName='password' type='password' placeholder='Enter your password')
           .error-message(*ngIf="\
-          authForm.get('login')?.invalid &&\
-          authForm.get('login')?.dirty &&\
-          authForm.get('login')?.touched\
+          authForm.get('password')?.invalid &&\
+          authForm.get('password')?.dirty &&\
+          authForm.get('password')?.touched\
           ")
             p.error-mes *The length must be at least 3 characters.
           .button
             button.btn.btn-success(type='submit') Sign in
         .signup
           p
-            | New to Tangram? 
+            | New to TangramFeed? 
             a([routerLink]="['/signup']") Create an account.

@@ -1,12 +1,12 @@
 .signUp
-  h2 Sign up to Tangram
+  h2.text-center Sign up to TangramFeed
   .card
     .card-body
       .mb-3(*ngIf='registerForm')
         form( [formGroup]='registerForm', (ngSubmit)='onSubmit()')
           .userName
-            label.form-label Enter your username 
-            input.form-control(formControlName='userName' type='text')
+            label.form-label Username 
+            input.form-control(formControlName='userName' type='text' placeholder='Enter username')
           .error-message(*ngIf="\
           registerForm.get('userName')?.invalid &&\
           registerForm.get('userName')?.dirty &&\
@@ -14,8 +14,8 @@
           ")
             p.error-mes *The length must be at least 3 characters.
           .email
-            label.form-label Enter your email 
-            input.form-control(formControlName='email' type='email')
+            label.form-label Email 
+            input.form-control(formControlName='email' type='email' placeholder='Enter email')
           .error-message(*ngIf="\
           registerForm.get('email')?.invalid &&\
           registerForm.get('email')?.dirty &&\
@@ -23,8 +23,8 @@
           ")
             p.error-mes *The email must be valid.
           .password
-            label.form-label Create a password 
-            input.form-control(formControlName='password' type='password')
+            label.form-label Password 
+            input.form-control(formControlName='password' type='password' placeholder='Enter password')
           .error-message(*ngIf="\
           registerForm.get('password')?.invalid &&\
           registerForm.get('password')?.dirty &&\
@@ -32,8 +32,8 @@
           ")
             p.error-mes *The length must be at least 3 characters.
           .confPassword
-            label.form-label Enter your password for verify
-            input.form-control(formControlName='confPassword' type='password')
+            label.form-label Confirm password
+            input.form-control(formControlName='confPassword' type='password' placeholder='Enter confirm password for verify')
           .error-message(*ngIf="\
           registerForm.get('confPassword')?.invalid &&\
           registerForm.get('confPassword')?.dirty &&\
@@ -42,5 +42,7 @@
             p.error-mes *The length must be at least 3 characters.
           .button
             button.btn.btn-success(type='submit') Sign up
-          .button
-            button.btn.btn-primary(type='button', routerLink='/login') Return to Log in
+          .signin
+            p 
+              | Do you have account? 
+              a([routerLink]="['/signin']") Sign in.
