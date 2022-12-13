@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable } from "rxjs";
-import { Post } from "../interfaces/post";
-import { ApiService } from "../services/api.service";
+import { ApiService } from "src/app/core/services/api.service";
+import { Post } from "../models/post";
 
 @Injectable({
   providedIn: "root",
