@@ -1,48 +1,47 @@
-.signUp
+.register
   h2.text-center Sign up to TangramFeed
   .card
     .card-body
       .mb-3(*ngIf='registerForm')
-        form( [formGroup]='registerForm', (ngSubmit)='onSubmit()')
+        form([formGroup]='registerForm', (ngSubmit)='onSubmit()')
           .userName
-            label.form-label Username 
-            input.form-control(formControlName='userName' type='text' placeholder='Enter username')
-          .error-message(*ngIf="\
-          registerForm.get('userName')?.invalid &&\
-          registerForm.get('userName')?.dirty &&\
-          registerForm.get('userName')?.touched\
-          ")
-            p.error-mes *The length must be at least 3 characters.
+            label.form-label(for='userName') Username 
+            input.form-control(formControlName='userName' type='text' placeholder='Enter userName')
+          .error-message(*ngIf='userName?.touched')
+            p.error-mes.text-danger(*ngIf="userName?.errors?.['required']") *Username is required!
+            p.error-mes.text-danger(*ngIf="userName?.errors?.['pattern']") *Username can be letters and numbers, but must start with a letter!
+            p.error-mes.text-danger(*ngIf="userName?.errors?.['maxlength']") *Username length can't be more than 32 symbols!
+            p.error-mes.text-danger(*ngIf="userName?.errors?.['minlength']") *Username length can be more than 4 symbols!
           .email
-            label.form-label Email 
+            label.form-label(for='email') Email 
             input.form-control(formControlName='email' type='email' placeholder='Enter email')
-          .error-message(*ngIf="\
-          registerForm.get('email')?.invalid &&\
-          registerForm.get('email')?.dirty &&\
-          registerForm.get('email')?.touched\
-          ")
-            p.error-mes *The email must be valid.
+          .error-message(*ngIf='email?.touched')
+            p.error-mes.text-danger(*ngIf="email?.errors?.['required']") *Email is required!
+            p.error-mes.text-danger(*ngIf="email?.errors?.['email']") *Email is not in a correct format!
+            p.error-mes.text-danger(*ngIf="email?.errors?.['maxlength']") *Email length can't be more than 100 symbols!
+            p.error-mes.text-danger(*ngIf="email?.errors?.['minlength']") *Email length can be more than 6 symbols!
           .password
-            label.form-label Password 
+            label.form-label(for='password') Password 
             input.form-control(formControlName='password' type='password' placeholder='Enter password')
-          .error-message(*ngIf="\
-          registerForm.get('password')?.invalid &&\
-          registerForm.get('password')?.dirty &&\
-          registerForm.get('password')?.touched\
-          ")
-            p.error-mes *The length must be at least 3 characters.
-          .confPassword
-            label.form-label Confirm password
-            input.form-control(formControlName='confPassword' type='password' placeholder='Enter confirm password for verify')
-          .error-message(*ngIf="\
-          registerForm.get('confPassword')?.invalid &&\
-          registerForm.get('confPassword')?.dirty &&\
-          registerForm.get('confPassword')?.touched\
-          ")
-            p.error-mes *The length must be at least 3 characters.
+          .error-message(*ngIf='password?.touched')
+            p.error-mes.text-danger(*ngIf="password?.errors?.['required']") *Password is required!
+            p.error-mes.text-danger(*ngIf="password?.errors?.['pattern']") *Password must contain one capital letter, small letter, number and special symbol!
+            p.error-mes.text-danger(*ngIf="password?.errors?.['maxlength']") *Email length can't be more than 32 symbols!
+            p.error-mes.text-danger(*ngIf="password?.errors?.['minlength']") *Email length can be more than 8 symbols!
+          .confirmPassword
+            label.form-label(for='confirmPassword') Confirm password
+            input.form-control(formControlName='confirmPassword' type='password' placeholder='Enter confirm password for verify')
+          .error-message(*ngIf='confirmPassword?.touched')
+            p.error-mes.text-danger(*ngIf="confirmPassword?.errors?.['required']") *Confirm password is required!
+            p.error-mes.text-danger(*ngIf="confirmPassword?.errors?.['pattern']") *Confirm password must contain one capital letter, small letter, number and special symbol!
+            p.error-mes.text-danger(*ngIf="confirmPassword?.errors?.['maxlength']") *Confirm password length can't be more than 32 symbols!
+            p.error-mes.text-danger(*ngIf="confirmPassword?.errors?.['minlength']") *Confirm password length can be more than 8 symbols!
+            p.error-mes.text-danger(*ngIf="registerForm?.errors?.['sameValue']") *Passwords not match!
           .button
-            button.btn.btn-success(type='submit') Sign up
-          .signin
+            button.btn.btn-success(type='submit', [disabled]='registerForm.invalid') Sign up
+          .error-message(*ngIf='registerForm?.touched')
+            p.text-danger.text-center(*ngIf='registerForm?.errors?.["register"]') {{ registerForm?.errors?.['register'] }}
+          .signIn
             p 
               | Do you have account? 
               a([routerLink]="['/account/signin']") Sign in.

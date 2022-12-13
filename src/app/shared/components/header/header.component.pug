@@ -6,5 +6,4 @@ nav.navbar.bg-light
     .container
       form.d-flex.justify-content-center(role='search')
         input.form-control.me-2(type='search' placeholder='Search' aria-label='Search' , [formControl]="search", (input)='searchPosts()' )
-    button.btn.btn-primary(type='button', [routerLink]="['/account/signin']") Log in
-      
+    app-account-menu      

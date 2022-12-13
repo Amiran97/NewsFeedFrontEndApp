@@ -1,0 +1,9 @@
+ul.navbar-nav(*ngIf='!(accountFacade.isAuthenticated$() | async)')
+    li.nav-item.me-4(routerLinkActive="active")
+        a.nav-link.px-3([routerLink]="['/account/signin']") Sing in
+
+ul.navbar-nav.d-flex.justify-content-center.flex-row(*ngIf='accountFacade.isAuthenticated$() | async')
+    li.nav-item.me-2.mt-2
+        span.py-2.px-3.text-username {{(accountFacade.account$ | async)?.username}}
+    li.nav-item.me-4
+        a.nav-link.px-3.cur-pointer((click)="onLogoutClick()") Logout

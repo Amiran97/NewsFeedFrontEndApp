@@ -3,29 +3,27 @@
   .card
     .card-body
       .mb-3(*ngIf='authForm')
-        form( [formGroup]='authForm' , (ngSubmit)='onSubmit()')
+        form([formGroup]='authForm', (ngSubmit)='onSubmit()')
           .email
-            label.form-label(for='exampleFormControlInput1')
-              | Email address
-            input.form-control(formControlName='login' type='email' placeholder='Enter your email')
-          .error-message(*ngIf="\
-          authForm.get('login')?.invalid &&\
-          authForm.get('login')?.dirty &&\
-          authForm.get('login')?.touched\
-          ")
-            p.error-mes *The length must be at least 3 characters.
+            label.form-label(for='email') Email address
+            input.form-control(formControlName='email' type='email' placeholder='Enter your email')
+          .error-message(*ngIf='email?.touched')
+            p.error-mes.text-danger(*ngIf="email?.errors?.['required']") *Email is required!
+            p.error-mes.text-danger(*ngIf="email?.errors?.['email']") *Email is not in a correct format!
+            p.error-mes.text-danger(*ngIf="email?.errors?.['maxlength']") *Email length can't be more than 100 symbols!
+            p.error-mes.text-danger(*ngIf="email?.errors?.['minlength']") *Email length can be more than 6 symbols!
           .password
-            label.form-label(for='exampleFormControlInput1')
-              | Password
+            label.form-label(for='password') Password
             input.form-control(formControlName='password' type='password' placeholder='Enter your password')
-          .error-message(*ngIf="\
-          authForm.get('password')?.invalid &&\
-          authForm.get('password')?.dirty &&\
-          authForm.get('password')?.touched\
-          ")
-            p.error-mes *The length must be at least 3 characters.
+          .error-message(*ngIf='password?.touched')
+            p.error-mes.text-danger(*ngIf="password?.errors?.['required']") *Password is required!
+            p.error-mes.text-danger(*ngIf="password?.errors?.['pattern']") *Password must contain one capital letter, small letter, number and special symbol!
+            p.error-mes.text-danger(*ngIf="password?.errors?.['maxlength']") *Email length can't be more than 32 symbols!
+            p.error-mes.text-danger(*ngIf="password?.errors?.['minlength']") *Email length can be more than 8 symbols!
           .button
-            button.btn.btn-success(type='submit') Sign in
+            button.btn.btn-success(type='submit', [disabled]='authForm.invalid') Sign in
+          .error-message(*ngIf='authForm?.touched')
+            p.text-danger.text-center(*ngIf='authForm?.errors?.["auth"]') {{ authForm?.errors?.['auth'] }}
         .signup
           p
             | New to TangramFeed? 
