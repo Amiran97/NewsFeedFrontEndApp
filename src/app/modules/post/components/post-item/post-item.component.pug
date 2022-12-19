@@ -1,27 +1,31 @@
 .post-card-wrapper.d-flex.flex-row-reverse.mt-3.mb-5(*ngIf='post')
-  .post-card(style='max-width: 700px')
-    .post-card-header.d-flex.align-items-center
-      h6.p-1.m-0 author: {{ post.nickname }}
-      p.p-1.m-0.ms-5 {{ post.createDate }}
+  .post-card(style='width: 700px')
+    .post-card-header.d-flex
+      h6.p-1.m-0 author: {{ post.authorName }}
+      p.p-1.m-0.ms-5.ms-auto {{ (post.createdAt >= post.updatedAt ? post.createdAt : post.updatedAt) | date:'dd.MM.yyyy - HH:mm:SS'}}
+    .post-tags.mb-1(*ngIf='post.tags.length > 0')
+      span.py-2.px-3.text-tag.me-2.cur-pointer(*ngFor='let tag of post.tags') {{ tag }}
     .post-card-body
       .body-title.mb-2
         h2 {{ post.title }}
       .body-content
         .content-text
-          p {{ post.postContent }}
-        .content-image(*ngIf='post.postImg')
-          <img [src]=post.postImg class="card-img-top" alt="..." />
+          p {{ post.content }}
+        ngb-carousel(*ngIf='post.images.length > 0')
+          ng-template(ngbSlide *ngFor="let image of post.images")
+            .wrapper.d-flex.justify-content-center
+              img.d-block([src]='imageUrl+image', alt='Not found image')  
     .post-card-footer.d-flex.py-2.pt-2
       .footer-comments.mx-3.d-flex.align-items-center((click)='commentPost()')
         i.bi.bi-chat-left-text-fill.me-2
-        span {{ post.countComments }}
+        span {{ post.commentCount }}
       .footer-likes.d-flex.align-items-center((click)='likePost()')
         i.bi.bi-heart-fill.me-2
-        span {{ post.likes }}
+        span {{ post.likes.length }}
   .post-card-rating.me-3.mt-2
     button.btn.btn-light((click)='ratingUp()')
       i.bi.bi-caret-up-fill
-    p.my-1.p-0 {{post.rating}}
+    p.my-1.p-0 {{post.likes.length}}
     button.btn.btn-light((click)='ratingDown()')
       i.bi.bi-caret-down-fill
     

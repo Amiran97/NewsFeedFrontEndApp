@@ -1,0 +1,34 @@
+.create-post
+  h2.text-center Create new post
+  .card
+    .card-body
+      .mb-3(*ngIf='postForm')
+        form([formGroup]='postForm', (ngSubmit)='onSubmit()')
+          .title
+            label.form-label(for='title') Title 
+            input.form-control(formControlName='title' type='text' placeholder='Enter title')
+          .error-message(*ngIf='title?.touched')
+            p.error-mes.text-danger(*ngIf="title?.errors?.['required']") *Title is required!
+            p.error-mes.text-danger(*ngIf="title?.errors?.['maxlength']") *Title length can't be more than 100 symbols!
+          .content
+            label.form-label(for='content') Content 
+            textarea.form-control(formControlName='content' type='text' row='3' placeholder='Enter content')
+          .error-message(*ngIf='content?.touched')
+            p.error-mes.text-danger(*ngIf="content?.errors?.['required']") *Content is required!
+            p.error-mes.text-danger(*ngIf="content?.errors?.['maxlength']") *Content length can't be more than 255 symbols!
+
+          .tag.input-group.mb-3
+            input.form-control(formControlName='tag' type="text" placeholder="Tag name")
+            button.btn.btn-outline-secondary.input-group-append(type="button", (click)="addTag()", [disabled]='tag?.invalid') Add
+
+          .d-flex.flex-wrap
+            span.py-2.px-3.text-tag.cur-pointer.me-2.mb-2(*ngFor='let tag of tags', title='Remove', (click)='removeTag(tag)') {{ tag }}
+
+          .file.input-group.mb-3
+            .custom-file
+              input.custom-file-input(type="file", accept="image/png, image/gif, image/jpeg", multiple="multiple", (change)="onFileChanged($event)")
+
+          .button
+            button.btn.btn-success(type='submit', [disabled]='title?.invalid || content?.invalid') Create post
+          .error-message(*ngIf='postForm?.touched')
+            p.text-danger.text-center(*ngIf='postForm?.errors?.["create"]') {{ postForm?.errors?.['create'] }}

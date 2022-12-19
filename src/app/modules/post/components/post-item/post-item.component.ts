@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Post } from "src/app/modules/post/models/post";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-post-item",
@@ -8,9 +9,10 @@ import { Post } from "src/app/modules/post/models/post";
 })
 export class PostItemComponent implements OnInit {
   @Input() post?: Post;
+  imageUrl: string = environment.BASE_URL;
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {console.log(this.post);}
   ratingUp() {
     console.log("Rating up");
   }

@@ -1,15 +1,34 @@
 .post-card-wrapper {
   .post-card {
-    border-radius: 5px;
     background-color: rgb(236, 236, 236);
 
     .post-card-header {
       align-items: center;
       padding: 0.8rem;
       padding-bottom: 0;
-
+      background-color: lightgray;
+      border-radius: 5px 5px 0px 0px;
       p {
         color: rgb(130, 130, 130);
+      }
+    }
+
+    .post-tags {
+      padding: 0.8rem;
+      background-color: gray;
+
+      .text-tag:hover {
+        background-color: gray;
+      }
+
+      .text-tag {
+        color: black;
+        border-radius: 3px;
+        background-color: darkgray;
+        border: 1px solid #626262;
+        -webkit-user-select: none;
+        -ms-user-select: none; 
+        user-select: none; 
       }
     }
 
@@ -19,10 +38,19 @@
       .content-image {
         margin: -0.8rem;
       }
+
+      img {
+        max-height: 500px;
+      }
+
+      .wrapper{ 
+        height: 500px;
+      }
     }
 
     .post-card-footer {
       background-color: rgb(98, 98, 98);
+      border-radius: 0px 0px 5px 5px;
       color: white;
 
       .footer-comments {

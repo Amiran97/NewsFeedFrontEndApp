@@ -1,0 +1,48 @@
+.create-post {
+  margin: 3rem auto;
+  max-width: 500px;
+  margin-top: 90px;
+
+  h2 {
+    margin-bottom: 2rem;
+  }
+
+  .text-tag:hover {
+    background-color: whitesmoke;
+  }
+
+  .text-tag {
+    color: black;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
+  }
+
+  .tag {
+    margin-bottom: 1rem;
+    width: 150px;
+  }
+  
+  .file
+  .title,
+  .content {
+    margin-bottom: 1rem;
+  }
+
+  .button {
+    display: flex;
+    justify-content: center;
+
+    .btn-success {
+      width: 200px;
+      margin: 1.5rem 0;
+    }
+
+    .btn-primary {
+      width: 200px;
+      margin: 0;
+    }
+  }
+}

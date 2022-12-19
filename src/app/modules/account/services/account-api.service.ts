@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiService } from 'src/app/core/services/api.service';
@@ -6,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import { AccountLoginCredentials } from '../models/account-login-credentials';
 import { AccountRegisterCredentials } from '../models/account-register-credentials';
 import { Tokens } from '../models/tokens';
-
+import jwtDecode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })
@@ -28,7 +27,7 @@ export class AccountApiService {
     return this.apiService.post<Tokens>(`${this.apiUrl}/refresh`, data);
   }
 
-  logout() : Observable<void> {
-    return this.apiService.post<void>(`${this.apiUrl}/revoke`);
+  logout(userName: string) : Observable<void> {
+    return this.apiService.post<void>(`${this.apiUrl}/revoke/${userName}`);
   }
 }
