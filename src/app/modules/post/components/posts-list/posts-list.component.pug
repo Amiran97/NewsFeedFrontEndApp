@@ -1,3 +1,5 @@
 .posts(*ngIf="postsList$ | async as postsList")
+  .create-post.d-flex.justify-content-center
+    button.btn.btn-success.mt-2(*ngIf='accountFacade.isAuthenticated$() | async' type='button', [routerLink]="['/create']") Create new post
   .post-item.d-flex.justify-content-center(*ngFor='let post of postsList')
     app-post-item([post]='post')

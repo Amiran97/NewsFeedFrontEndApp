@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Observable } from "rxjs";
-import { PostsService } from "src/app/modules/post/services/posts.service";
+import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
 import { Post } from "src/app/modules/post/models/post";
+import { PostFacadeService } from "../../services/post-facade.service";
 
 @Component({
   selector: "app-posts-list",
@@ -9,9 +10,10 @@ import { Post } from "src/app/modules/post/models/post";
   styleUrls: ["./posts-list.component.scss"],
 })
 export class PostsListComponent implements OnInit {
-  constructor(private postService: PostsService) {}
+  constructor(private postFacade: PostFacadeService,
+    public accountFacade: AccountFacadeService) {}
 
-  postsList$: Observable<Post[]> = this.postService.postsList$;
+  postsList$: Observable<Post[]> = this.postFacade.posts$;
 
   ngOnInit() {}
 }

@@ -6,7 +6,6 @@ import { tap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AccountRegisterCredentials } from '../models/account-register-credentials';
 import { AccountLoginCredentials } from '../models/account-login-credentials';
-import { Account } from '../models/acoount';
 import { Tokens } from '../models/tokens';
 import jwtDecode from 'jwt-decode';
 
@@ -54,7 +53,8 @@ export class AccountFacadeService {
   }
 
   logout() : Observable<void> {
-    return this.accountApi.logout().pipe(
+    let data: any = jwtDecode(this.tokenStorage.tokens.accessToken);
+    return this.accountApi.logout(data.name).pipe(
       tap(() => this.tokenStorage.removeTokens()),
       tap(() => this.accountState.removeAccount())
     );
