@@ -6,21 +6,20 @@ import { PostRoutingModule } from './post-router.module';
 import { PostCreateComponent } from './components/post-create/post-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostDetailComponent } from './components/post-detail/post-detail.component';
 
 @NgModule({
   declarations: [
     PostsListComponent,
     PostItemComponent,
-    PostCreateComponent
+    PostCreateComponent,
+    PostDetailComponent
   ],
   imports: [
     CommonModule,
     PostRoutingModule,
     ReactiveFormsModule,
     NgbModule
-  ],
-  exports: [
-    PostsListComponent
   ]
 })
 export class PostModule { }

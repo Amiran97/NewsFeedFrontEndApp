@@ -1,0 +1,82 @@
+.post-detail {
+  margin: 3rem auto;
+  margin-top: 90px;
+  max-width: 700px;
+  
+  .post-card-wrapper {
+    .post-card {
+      background-color: rgb(236, 236, 236);
+
+      .post-card-header {
+        align-items: center;
+        padding: 0.8rem;
+        padding-bottom: 0;
+        background-color: lightgray;
+        border-radius: 5px 5px 0px 0px;
+        p {
+          color: rgb(130, 130, 130);
+        }
+      }
+
+      .post-tags {
+        padding: 0.8rem;
+        background-color: gray;
+
+        .text-tag:hover {
+          background-color: gray;
+        }
+
+        .text-tag {
+          color: black;
+          border-radius: 3px;
+          background-color: darkgray;
+          border: 1px solid #626262;
+          -webkit-user-select: none;
+          -ms-user-select: none; 
+          user-select: none; 
+        }
+      }
+
+      .post-card-body {
+        padding: 0.8rem;
+
+        .content-image {
+          margin: -0.8rem;
+        }
+
+        img {
+          max-height: 500px;
+        }
+
+        .wrapper{ 
+          height: 500px;
+        }
+      }
+
+      .post-card-footer {
+        background-color: rgb(98, 98, 98);
+        border-radius: 0px 0px 5px 5px;
+        color: white;
+
+        .footer-comments {
+          cursor: pointer;
+        }
+
+        .footer-likes {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .post-card-rating {
+      font-size: 26px;
+      width: 50px;
+      height: 120px;
+      text-align: center;
+
+      i {
+        width: 28px;
+      }
+    }
+  }
+}

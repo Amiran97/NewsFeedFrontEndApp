@@ -19,6 +19,10 @@ export class PostApiService {
     return this.apiService.get(`${this.apiUrl}?page=${page}`);
   }
 
+  getById(id: number) : Observable<Post> {
+    return this.apiService.get(`${this.apiUrl}/detail/${id}`);
+  }
+
   create(data: any) : Observable<Post> {
     return this.apiService.post<Post>(`${this.apiUrl}`, data);
   }

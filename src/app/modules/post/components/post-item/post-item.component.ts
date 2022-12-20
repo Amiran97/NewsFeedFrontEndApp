@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 import { Post } from "src/app/modules/post/models/post";
 import { environment } from "src/environments/environment";
 
@@ -7,12 +8,15 @@ import { environment } from "src/environments/environment";
   templateUrl: "./post-item.component.pug",
   styleUrls: ["./post-item.component.scss"],
 })
-export class PostItemComponent implements OnInit {
+export class PostItemComponent {
   @Input() post?: Post;
   imageUrl: string = environment.BASE_URL;
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit() {console.log(this.post);}
+  navigateToDetailClick() {
+    this.router.navigate(['/', this.post?.id]);
+  }
+
   ratingUp() {
     console.log("Rating up");
   }
@@ -20,9 +24,11 @@ export class PostItemComponent implements OnInit {
     console.log("Rating down");
   }
   likePost() {
+    this.navigateToDetailClick();
     console.log("Like Post");
   }
   commentPost() {
+    this.navigateToDetailClick();
     console.log("Comment Post");
   }
 }
