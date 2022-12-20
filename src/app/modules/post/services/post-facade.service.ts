@@ -17,6 +17,10 @@ export class PostFacadeService {
       get posts$() {
         return this.postStorage.posts$;
       }
+
+      getById(id: number) : Observable<Post> {
+        return this.postApi.getById(id);
+      }
     
       create(data: any) : Observable<Post> {
         return this.postApi.create(data).pipe(

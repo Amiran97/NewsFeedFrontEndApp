@@ -1,15 +1,15 @@
 .post-card-wrapper.d-flex.flex-row-reverse.mt-3.mb-5(*ngIf='post')
   .post-card(style='width: 700px')
-    .post-card-header.d-flex
+    .post-card-header.d-flex((click)='navigateToDetailClick()')
       h6.p-1.m-0 author: {{ post.authorName }}
       p.p-1.m-0.ms-5.ms-auto {{ (post.createdAt >= post.updatedAt ? post.createdAt : post.updatedAt) | date:'dd.MM.yyyy - HH:mm:SS'}}
     .post-tags.mb-1(*ngIf='post.tags.length > 0')
       span.py-2.px-3.text-tag.me-2.cur-pointer(*ngFor='let tag of post.tags') {{ tag }}
     .post-card-body
-      .body-title.mb-2
+      .body-title.mb-2((click)='navigateToDetailClick()')
         h2 {{ post.title }}
       .body-content
-        .content-text
+        .content-text((click)='navigateToDetailClick()')
           p {{ post.content }}
         ngb-carousel(*ngIf='post.images.length > 0')
           ng-template(ngbSlide *ngFor="let image of post.images")
