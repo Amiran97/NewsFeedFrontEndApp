@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { AccountLoginCredentials } from '../models/account-login-credentials';
 import { AccountRegisterCredentials } from '../models/account-register-credentials';
 import { Tokens } from '../models/tokens';
-import jwtDecode from 'jwt-decode';
 @Injectable({
   providedIn: 'root'
 })

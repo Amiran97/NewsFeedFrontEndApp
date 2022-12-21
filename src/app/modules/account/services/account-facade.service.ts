@@ -59,4 +59,10 @@ export class AccountFacadeService {
       tap(() => this.accountState.removeAccount())
     );
   }
+
+  refresh() : Observable<Tokens> {
+    return this.accountApi.refresh(this.tokenStorage.tokens).pipe(
+      tap(tokens => this.tokenStorage.setTokens(tokens))
+    )
+  }
 }
