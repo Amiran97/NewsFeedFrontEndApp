@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
 import { Post } from "src/app/modules/post/models/post";
 import { environment } from "src/environments/environment";
+import { PostFacadeService } from "../../services/post-facade.service";
 
 @Component({
   selector: "app-post-item",
@@ -11,10 +13,18 @@ import { environment } from "src/environments/environment";
 export class PostItemComponent {
   @Input() post?: Post;
   imageUrl: string = environment.BASE_URL;
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+    public accountFacade: AccountFacadeService,
+    private postFacade: PostFacadeService) {}
 
   navigateToDetailClick() {
     this.router.navigate(['/', this.post?.id]);
+  }
+
+  deletePost() {
+    if(this.post?.id) {
+      this.postFacade.delete(this.post.id).subscribe(id => {});
+    }
   }
 
   ratingUp() {
