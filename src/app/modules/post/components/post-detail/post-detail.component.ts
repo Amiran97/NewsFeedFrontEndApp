@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
+import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
 import { Post } from "src/app/modules/post/models/post";
 import { environment } from "src/environments/environment";
 import { PostFacadeService } from "../../services/post-facade.service";
@@ -16,7 +17,9 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
   imageUrl: string = environment.BASE_URL;
   constructor(private route: ActivatedRoute,
-    private postFacade: PostFacadeService) {}
+    private router: Router,
+    private postFacade: PostFacadeService,
+    public accountFacade: AccountFacadeService) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -27,6 +30,14 @@ export class PostDetailComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  deletePost() {
+    if(this.post?.id) {
+      this.postFacade.delete(this.post.id).subscribe(id => {
+        this.router.navigate(['/']);
+      });
+    }
   }
 
   ratingUp() {

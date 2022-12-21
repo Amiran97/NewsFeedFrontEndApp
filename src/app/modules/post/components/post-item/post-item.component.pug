@@ -22,6 +22,8 @@
       .footer-likes.d-flex.align-items-center((click)='likePost()')
         i.bi.bi-heart-fill.me-2
         span {{ post.likes.length }}
+      .footer-delete.d-flex.ms-auto.me-3(*ngIf='(accountFacade.account$ | async)?.username === post.authorName')
+        button.btn.btn-danger((click)='deletePost()') Delete
   .post-card-rating.me-3.mt-2
     button.btn.btn-light((click)='ratingUp()')
       i.bi.bi-caret-up-fill

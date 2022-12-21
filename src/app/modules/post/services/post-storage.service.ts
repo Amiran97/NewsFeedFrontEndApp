@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as _ from 'lodash';
 import { BehaviorSubject } from 'rxjs';
 import { Post } from '../models/post';
 
@@ -22,5 +23,10 @@ export class PostStorageService {
 
   create(post: Post) {
     this.posts.next([post, ...this.posts.getValue()]);
-  }  
+  }
+
+  delete(id: number) {
+    _.remove(this.posts.getValue(), post => post.id === id);
+    this.posts.next(this.posts.getValue());
+  }
 }

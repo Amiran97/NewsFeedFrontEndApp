@@ -26,4 +26,8 @@ export class PostApiService {
   create(data: any) : Observable<Post> {
     return this.apiService.post<Post>(`${this.apiUrl}`, data);
   }
+
+  delete(id: number) : Observable<number> {
+    return this.apiService.delete<number>(`${this.apiUrl}/${id}`);
+  }
 }

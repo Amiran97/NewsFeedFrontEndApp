@@ -28,6 +28,12 @@ export class PostFacadeService {
         );
       }
 
+      delete(id: number) : Observable<number> {
+        return this.postApi.delete(id).pipe(
+          tap(id => this.postStorage.delete(id))
+        );
+      }
+
       private clear() {
         this.postStorage.set([]);  
       }
