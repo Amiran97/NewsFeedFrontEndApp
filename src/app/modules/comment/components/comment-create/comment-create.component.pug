@@ -1,0 +1,19 @@
+.create-container.d-flex.d-row.justify-content-center
+  .skip-zone.me-3
+  .create-comment
+    hr
+    h4.text-center Create new comment
+    .card
+      .card-body
+        .mb-3(*ngIf='commentForm')
+          form([formGroup]='commentForm', (ngSubmit)='onSubmit()')
+            .message
+              label.form-label(for='message') Message 
+              textarea.form-control(formControlName='message' type='text' row='3' placeholder='Enter message')
+            .error-message(*ngIf='message?.touched')
+              p.error-mes.text-danger(*ngIf="message?.errors?.['required']") *Message is required!
+              p.error-mes.text-danger(*ngIf="message?.errors?.['maxlength']") *Message length can't be more than 255 symbols!
+            .button.mt-3
+              button.btn.btn-success(type='submit', [disabled]='commentForm?.invalid') Send comment
+            .error-message(*ngIf='commentForm?.touched')
+              p.text-danger.text-center(*ngIf='commentForm?.errors?.["action"]') {{ commentForm?.errors?.['action'] }}

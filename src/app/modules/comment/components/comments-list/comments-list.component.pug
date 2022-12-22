@@ -1,0 +1,7 @@
+.mb-5
+  app-comment-create([id]='id')
+  .comments(*ngIf="commentsList$ | async as commentsList")
+    .comment-item.d-flex.justify-content-center(*ngFor='let comment of commentsList')
+      app-comment-item([comment]='comment')
+    .no-data.d-flex.justify-content-center.w-100(*ngIf='commentsList.length == 0')
+      span.px-2.py-2.border.rounded.bg-light No data found

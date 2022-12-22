@@ -7,6 +7,7 @@ import { PostCreateEditComponent } from './components/post-create-edit/post-crea
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
+import { CommentModule } from '../comment/comment.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { PostDetailComponent } from './components/post-detail/post-detail.compon
     CommonModule,
     PostRoutingModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    CommentModule
   ]
 })
 export class PostModule { }
