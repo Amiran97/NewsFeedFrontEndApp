@@ -27,6 +27,12 @@ export class PostFacadeService {
           tap(data => this.postStorage.create(data))
         );
       }
+      
+      update(id: number, data: any) : Observable<Post> {
+        return this.postApi.update(id, data).pipe(
+          tap(data => this.postStorage.update(data))
+        );
+      }
 
       delete(id: number) : Observable<number> {
         return this.postApi.delete(id).pipe(

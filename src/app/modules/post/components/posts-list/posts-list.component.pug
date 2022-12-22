@@ -3,3 +3,5 @@
     button.btn.btn-success.mt-2.bi.bi-plus-lg.rounded(*ngIf='accountFacade.isAuthenticated$() | async' type='button', [routerLink]="['/create']") Post
   .post-item.d-flex.justify-content-center(*ngFor='let post of postsList')
     app-post-item([post]='post')
+  .no-data.d-flex.justify-content-center.w-100(*ngIf='postsList.length == 0')
+    span.px-2.py-2.border.rounded.bg-light No data found

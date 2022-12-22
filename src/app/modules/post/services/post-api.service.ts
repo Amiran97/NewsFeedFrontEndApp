@@ -27,6 +27,10 @@ export class PostApiService {
     return this.apiService.post<Post>(`${this.apiUrl}`, data);
   }
 
+  update(id: number, data: any) : Observable<Post> {
+    return this.apiService.put<Post>(`${this.apiUrl}/${id}`, data);
+  }
+
   delete(id: number) : Observable<number> {
     return this.apiService.delete<number>(`${this.apiUrl}/${id}`);
   }

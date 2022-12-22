@@ -25,6 +25,13 @@ export class PostStorageService {
     this.posts.next([post, ...this.posts.getValue()]);
   }
 
+  update(post: Post) {
+    let posts = this.posts.getValue();
+    let index = _.findLastIndex(posts, item => item.id == post.id);
+    posts[index] = post;
+    this.posts.next(posts);
+  }
+
   delete(id: number) {
     _.remove(this.posts.getValue(), post => post.id === id);
     this.posts.next(this.posts.getValue());
