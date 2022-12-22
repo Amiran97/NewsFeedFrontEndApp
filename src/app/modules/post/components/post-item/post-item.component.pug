@@ -8,7 +8,7 @@
     .post-card-body
       .body-title.mb-2((click)='navigateToDetailClick()')
         h2 {{ post.title }}
-      .body-content
+      .body-content(id="collapseCardBody", [ngbCollapse]="isCollapsed")
         .content-text((click)='navigateToDetailClick()')
           p {{ post.content }}
         ngb-carousel(*ngIf='post.images.length > 0')
@@ -25,10 +25,13 @@
       .footer-action-btns.d-flex.ms-auto.me-3(*ngIf='(accountFacade.account$ | async)?.username === post.authorName')
         button.btn.btn-warning.text-white.bi.bi-pencil-fill((click)='navigateToEditPost()')
         button.btn.btn-danger.ms-3.bi.bi-trash-fill((click)='deletePost()')
-  .post-card-rating.me-3.mt-2
+  .post-card-left-controls.me-3.mt-2
     button.btn.btn-light((click)='ratingUp()')
       i.bi.bi-caret-up-fill
     p.my-1.p-0 {{post.likes.length}}
     button.btn.btn-light((click)='ratingDown()')
       i.bi.bi-caret-down-fill
+    button.btn.btn-light.mt-2((click)="isCollapsed = !isCollapsed", [attr.aria-expanded]="!isCollapsed", aria-controls="collapseCardBody")
+      i.bi.bi-arrows-collapse(*ngIf='!isCollapsed')
+      i.bi.bi-arrows-expand(*ngIf='isCollapsed')
     
