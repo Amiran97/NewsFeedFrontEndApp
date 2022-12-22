@@ -13,6 +13,8 @@ import { PostFacadeService } from "../../services/post-facade.service";
 export class PostItemComponent {
   @Input() post?: Post;
   imageUrl: string = environment.IMAGE_URL;
+  isCollapsed: boolean = false;
+
   constructor(private router: Router,
     public accountFacade: AccountFacadeService,
     private postFacade: PostFacadeService) {}
