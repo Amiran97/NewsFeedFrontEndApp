@@ -12,7 +12,7 @@ import { PostFacadeService } from "../../services/post-facade.service";
 })
 export class PostItemComponent {
   @Input() post?: Post;
-  imageUrl: string = environment.BASE_URL;
+  imageUrl: string = environment.IMAGE_URL;
   constructor(private router: Router,
     public accountFacade: AccountFacadeService,
     private postFacade: PostFacadeService) {}
@@ -24,6 +24,12 @@ export class PostItemComponent {
   deletePost() {
     if(this.post?.id) {
       this.postFacade.delete(this.post.id).subscribe(id => {});
+    }
+  }
+
+  navigateToEditPost() {
+    if(this.post?.id) {
+      this.router.navigate(['/edit', this.post?.id]);
     }
   }
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: 'http://localhost:5000/',
+  IMAGE_URL: 'http://localhost:5000/Images/',
   API_URL: 'http://localhost:5000/api/v1',
   ACCOUNT_API_URL: 'Auth',
   POST_API_URL: 'Post',

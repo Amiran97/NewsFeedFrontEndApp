@@ -15,41 +15,18 @@ export class PostDetailComponent implements OnInit, OnDestroy {
   post?: Post;
   private sub: any;
 
-  imageUrl: string = environment.BASE_URL;
+  imageUrl: string = environment.IMAGE_URL;
   constructor(private route: ActivatedRoute,
-    private router: Router,
-    private postFacade: PostFacadeService,
-    public accountFacade: AccountFacadeService) {}
+    private postFacade: PostFacadeService) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id'];
-        this.postFacade.getById(this.id).subscribe(data => this.post = data);
+      this.postFacade.getById(this.id).subscribe(data => this.post = data);
     });
   }
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-
-  deletePost() {
-    if(this.post?.id) {
-      this.postFacade.delete(this.post.id).subscribe(id => {
-        this.router.navigate(['/']);
-      });
-    }
-  }
-
-  ratingUp() {
-    console.log("Rating up");
-  }
-  ratingDown() {
-    console.log("Rating down");
-  }
-  likePost() {
-    console.log("Like Post");
-  }
-  commentPost() {
-    console.log("Comment Post");
   }
 }

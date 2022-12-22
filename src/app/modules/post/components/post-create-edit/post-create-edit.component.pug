@@ -1,5 +1,6 @@
 .create-post
-  h2.text-center Create new post
+  h2.text-center(*ngIf='isAddMode') Create new post
+  h2.text-center(*ngIf='!isAddMode') Edit post
   .card
     .card-body
       .mb-3(*ngIf='postForm')
@@ -27,8 +28,16 @@
           .file.input-group.mb-3
             .custom-file
               input.custom-file-input(type="file", accept="image/png, image/gif, image/jpeg", multiple="multiple", (change)="onFileChanged($event)")
+            .d-flex.flex-wrap
+              img.d-block(*ngFor='let image of selectedFilesSrc', [src]='image', alt='Not found image')
+
+          .images-preview(*ngIf='!isAddMode && oldImagesSrc && oldImagesSrc.length > 0')
+            span.text-secondary *If you choose new images, old images deleted!
+            .d-flex.flex-wrap
+              img.d-block(*ngFor='let image of oldImagesSrc', [src]='imageUrl+image', alt='Not found image')
 
           .button
-            button.btn.btn-success(type='submit', [disabled]='title?.invalid || content?.invalid') Create post
+            button.btn.btn-success(type='submit', [disabled]='title?.invalid || content?.invalid', *ngIf='isAddMode') Create post
+            button.btn.btn-success(type='submit', [disabled]='title?.invalid || content?.invalid', *ngIf='!isAddMode') Edit post
           .error-message(*ngIf='postForm?.touched')
-            p.text-danger.text-center(*ngIf='postForm?.errors?.["create"]') {{ postForm?.errors?.['create'] }}
+            p.text-danger.text-center(*ngIf='postForm?.errors?.["action"]') {{ postForm?.errors?.['action'] }}
