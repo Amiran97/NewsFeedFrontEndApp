@@ -13,20 +13,23 @@ import { PostFacadeService } from "../../services/post-facade.service";
 export class PostDetailComponent implements OnInit, OnDestroy {
   id?: number;
   post?: Post;
-  private sub: any;
+
+  private routeSub: any;
+  private postSub: any;
 
   imageUrl: string = environment.IMAGE_URL;
   constructor(private route: ActivatedRoute,
     private postFacade: PostFacadeService) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
+    this.routeSub = this.route.params.subscribe(params => {
       this.id = +params['id'];
-      this.postFacade.getById(this.id).subscribe(data => this.post = data);
+      this.postSub = this.postFacade.getById(this.id).subscribe(data => this.post = data);
     });
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.routeSub.unsubscribe();
+    this.postSub.unsubscribe();
   }
 }

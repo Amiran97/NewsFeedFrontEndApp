@@ -8,6 +8,7 @@ export const environment = {
   API_URL: 'http://localhost:5000/api/v1',
   ACCOUNT_API_URL: 'Auth',
   POST_API_URL: 'Post',
+  COMMENT_API_URL: 'Comment',
   encryptSecretKey: 'd3b2cc0c-db8c-4dec-a25a-e1179ac30025'
 };
 
