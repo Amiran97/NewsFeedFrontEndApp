@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
-import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
+import { ActivatedRoute } from "@angular/router";
 import { Post } from "src/app/modules/post/models/post";
 import { environment } from "src/environments/environment";
 import { PostFacadeService } from "../../services/post-facade.service";
@@ -10,7 +9,7 @@ import { PostFacadeService } from "../../services/post-facade.service";
   templateUrl: "./post-detail.component.pug",
   styleUrls: ["./post-detail.component.scss"],
 })
-export class PostDetailComponent implements OnInit, OnDestroy {
+export class PostDetailComponent implements OnInit, OnDestroy  {
   id?: number;
   post?: Post;
 

@@ -1,5 +1,5 @@
 .post-card-wrapper.d-flex.flex-row-reverse.mt-3.mb-5(*ngIf='post')
-  .post-card(style='width: 700px')
+  .post-card(style='width: 700px', [id]='"id-" + post.id')
     .post-card-header.d-flex((click)='navigateToDetailClick()')
       h6.p-1.m-0 Author: {{ post.authorName }}
       p.p-1.m-0.ms-5.ms-auto {{ (post.createdAt >= post.updatedAt ? post.createdAt : post.updatedAt) | date:'dd.MM.yyyy - HH:mm:SS'}}
@@ -16,7 +16,7 @@
             .wrapper.d-flex.justify-content-center
               img.d-block([src]='imageUrl+image', alt='Not found image')  
     .post-card-footer.d-flex.py-2.pt-2
-      .footer-comments.mx-3.d-flex.align-items-center((click)='commentPost()')
+      .footer-comments.mx-3.d-flex.align-items-center((click)='navigateToCommentPost()')
         i.bi.bi-chat-left-text-fill.me-2
         span {{ post.commentCount }}
       .footer-likes.d-flex.align-items-center((click)='likePost()')
@@ -34,4 +34,6 @@
     button.btn.btn-light.mt-2((click)="isCollapsed = !isCollapsed", [attr.aria-expanded]="!isCollapsed", aria-controls="collapseCardBody")
       i.bi.bi-arrows-collapse(*ngIf='!isCollapsed')
       i.bi.bi-arrows-expand(*ngIf='isCollapsed')
+    button.btn.btn-light.mt-2((click)='navToNextPostClick()', [hidden]='isDetail')
+      i.bi.bi-arrow-bar-down
     
