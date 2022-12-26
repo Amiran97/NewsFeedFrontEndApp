@@ -5,6 +5,7 @@ import { AccountFacadeService } from "src/app/modules/account/services/account-f
 import { PostFacadeService } from "../../services/post-facade.service";
 import * as _ from 'lodash';
 import { environment } from "src/environments/environment";
+import { ToastService } from "src/app/shared/services/toast-service.service";
 
 @Component({
   selector: "app-post-create",
@@ -30,7 +31,8 @@ export class PostCreateEditComponent implements OnInit{
   constructor(private postFacade: PostFacadeService,
     private accountFacade: AccountFacadeService,
     private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute,
+    private toaster: ToastService) {}
 
   ngOnInit(): void {
     if(!this.accountFacade.isAuthenticated()) {
@@ -102,22 +104,24 @@ export class PostCreateEditComponent implements OnInit{
       if(this.isAddMode) {
         this.postFacade.create(formData).subscribe(
           () => {
+            this.toaster.showSuccess('Post creaded!');
             this.router.navigate(['/']);
           },
           error => {
             if(error.status == 400) {
-              this.postForm?.setErrors({'action': `Post can't create!`})
+              this.toaster.showSuccess("Post can't create!");
             }
           }
         );
       } else if(this.id) {
         this.postFacade.update(this.id, formData).subscribe(
           () => {
+            this.toaster.showSuccess('Post updated!');
             this.router.navigate(['/']);
           },
           error => {
             if(error.status == 400) {
-              this.postForm?.setErrors({'action': `Post can't update!`})
+              this.toaster.showSuccess("Post can't update!");
             }
           }
         );

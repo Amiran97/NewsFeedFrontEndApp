@@ -39,8 +39,6 @@
             p.error-mes.text-danger(*ngIf="registerForm?.errors?.['sameValue']") *Passwords not match!
           .button
             button.btn.btn-success(type='submit', [disabled]='registerForm.invalid') Sign up
-          .error-message(*ngIf='registerForm?.touched')
-            p.text-danger.text-center(*ngIf='registerForm?.errors?.["register"]') {{ registerForm?.errors?.['register'] }}
           .signIn
             p 
               | Do you have account? 

@@ -4,6 +4,7 @@ import { AccountFacadeService } from "src/app/modules/account/services/account-f
 import { Comment } from "src/app/modules/comment/models/comment";
 import { CommentFacadeService } from "src/app/modules/comment/services/comment-facade.service";
 import { Post } from "src/app/modules/post/models/post";
+import { ToastService } from "src/app/shared/services/toast-service.service";
 import { environment } from "src/environments/environment";
 import { PostFacadeService } from "../../services/post-facade.service";
 
@@ -32,7 +33,8 @@ export class PostItemComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     public accountFacade: AccountFacadeService,
     private postFacade: PostFacadeService,
-    private commentFacade: CommentFacadeService) {}
+    private commentFacade: CommentFacadeService,
+    private toaster: ToastService) {}
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -57,6 +59,7 @@ export class PostItemComponent implements OnInit, OnDestroy {
     if(this.post?.id) {
       this.deleteSub = this.postFacade.delete(this.post.id).subscribe(id => {
         if(this.isDetail) {
+          this.toaster.showSuccess('Post deleted!');
           this.router.navigate(['/']);
         }
       });

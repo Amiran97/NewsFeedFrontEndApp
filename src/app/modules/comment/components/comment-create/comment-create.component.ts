@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
+import { ToastService } from "src/app/shared/services/toast-service.service";
 import { Comment } from "../../models/comment";
 import { CommentRequest } from "../../models/comment-request";
 import { CommentFacadeService } from "../../services/comment-facade.service";
@@ -17,7 +18,8 @@ export class CommentCreateComponent implements OnInit {
   get message() { return this.commentForm?.get('message'); }
 
   constructor(public accountFacade: AccountFacadeService,
-    private commentFacade: CommentFacadeService) {}
+    private commentFacade: CommentFacadeService,
+    private toaster: ToastService) {}
 
   ngOnInit(): void {
     this.commentForm = new FormGroup({
@@ -32,10 +34,12 @@ export class CommentCreateComponent implements OnInit {
     if(this.commentForm && this.id) {
       let comment: CommentRequest ={ message: this.commentForm.value.message};
       this.commentFacade.create(this.id, comment).subscribe(
-        () => {},
+        () => {
+          this.toaster.showSuccess('Comment created!')
+        },
         error => {
           if(error.status == 400) {
-            this.commentForm?.setErrors({'action': `Comment can't create!`})
+            this.toaster.showError("Comment can't create!");
           }
         }
       );

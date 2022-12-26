@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfirmValidator } from "src/app/core/validators/confirm.validator";
+import { ToastService } from "src/app/shared/services/toast-service.service";
 import { AccountFacadeService } from "../../services/account-facade.service";
 
 @Component({
@@ -19,7 +20,8 @@ export class RegisterComponent {
   get confirmPassword() { return this.registerForm.get('confirmPassword'); }
 
   constructor(private accountFacade: AccountFacadeService,
-    private router: Router) {
+    private router: Router,
+    private toaster: ToastService) {
     if(this.accountFacade.isAuthenticated()) {
       this.router.navigate(['/']);
     }
@@ -64,11 +66,12 @@ export class RegisterComponent {
     if(this.registerForm.valid) {
       this.accountFacade.register(this.registerForm.value).subscribe(
         tokens => {
+          this.toaster.showSuccess('New account created!')
           this.router.navigate(['/']);
         },
         error => {
           if(error.status == 400) {
-            this.registerForm?.setErrors({'register': `User is already taken!`})
+            this.toaster.showError('User is already taken!');
           }
         }
       );
