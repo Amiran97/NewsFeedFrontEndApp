@@ -6,6 +6,8 @@ export interface Post {
   commentCount: number;
   images: string[];
   likes: string[];
+  dislikes: string[];
+  rating: number;
   tags: string[];
   createdAt: string | Date;
   updatedAt: string | Date;

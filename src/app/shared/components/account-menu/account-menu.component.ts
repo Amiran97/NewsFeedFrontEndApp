@@ -9,12 +9,9 @@ import { AccountFacadeService } from 'src/app/modules/account/services/account-f
 })
 export class AccountMenuComponent {
 
-  constructor(public accountFacade: AccountFacadeService,
-    private router: Router) {
-  }
+  constructor(public accountFacade: AccountFacadeService) {}
 
   onLogoutClick() {
     this.accountFacade.logout().subscribe();
-    this.router.navigate(['/account/signin']);
   }
 }

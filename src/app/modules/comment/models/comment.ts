@@ -5,4 +5,6 @@ export interface Comment {
     message: string
     createAt: string | Date;
     likes: string[];
+    dislikes: string[];
+    rating: number;
 }

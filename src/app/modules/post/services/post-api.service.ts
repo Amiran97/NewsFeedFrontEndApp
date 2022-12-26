@@ -11,6 +11,7 @@ import { PostsResponse } from '../models/posts-response';
 export class PostApiService {
 
   private readonly apiUrl: string = environment.POST_API_URL;
+  private readonly likeApiUrl: string = environment.POST_LIKE_API_URL;
 
   constructor(private apiService: ApiService) { }
 
@@ -32,5 +33,13 @@ export class PostApiService {
 
   delete(id: number) : Observable<number> {
     return this.apiService.delete<number>(`${this.apiUrl}/${id}`);
+  }
+
+  like(id: number) : Observable<Post> {
+    return this.apiService.post<Post>(`${this.likeApiUrl}/like/${id}`);
+  }
+
+  dislike(id: number) : Observable<Post> {
+    return this.apiService.post<Post>(`${this.likeApiUrl}/dislike/${id}`);
   }
 }

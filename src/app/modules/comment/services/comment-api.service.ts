@@ -10,6 +10,7 @@ import { Comment } from '../models/comment';
 export class CommentApiService {
 
   private readonly apiUrl: string = environment.COMMENT_API_URL;
+  private readonly likeApiUrl: string = environment.COMMENT_LIKE_API_URL;
 
   constructor(private apiService: ApiService) { }
 
@@ -23,5 +24,13 @@ export class CommentApiService {
 
   delete(id: number) : Observable<number> {
     return this.apiService.delete<number>(`${this.apiUrl}/${id}`);
+  }
+
+  like(id: number) : Observable<Comment> {
+    return this.apiService.post<Comment>(`${this.likeApiUrl}/like/${id}`);
+  }
+
+  dislike(id: number) : Observable<Comment> {
+    return this.apiService.post<Comment>(`${this.likeApiUrl}/dislike/${id}`);
   }
 }
