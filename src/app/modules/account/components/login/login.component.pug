@@ -22,8 +22,6 @@
             p.error-mes.text-danger(*ngIf="password?.errors?.['minlength']") *Email length can be more than 8 symbols!
           .button
             button.btn.btn-success(type='submit', [disabled]='authForm.invalid') Sign in
-          .error-message(*ngIf='authForm?.touched')
-            p.text-danger.text-center(*ngIf='authForm?.errors?.["auth"]') {{ authForm?.errors?.['auth'] }}
         .signup
           p
             | New to TangramFeed? 

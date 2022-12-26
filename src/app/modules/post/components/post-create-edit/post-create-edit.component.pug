@@ -39,5 +39,3 @@
           .button
             button.btn.btn-success(type='submit', [disabled]='title?.invalid || content?.invalid', *ngIf='isAddMode') Create post
             button.btn.btn-success(type='submit', [disabled]='title?.invalid || content?.invalid', *ngIf='!isAddMode') Edit post
-          .error-message(*ngIf='postForm?.touched')
-            p.text-danger.text-center(*ngIf='postForm?.errors?.["action"]') {{ postForm?.errors?.['action'] }}

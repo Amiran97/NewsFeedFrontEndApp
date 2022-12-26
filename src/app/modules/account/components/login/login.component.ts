@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { ToastService } from "src/app/shared/services/toast-service.service";
 import { AccountFacadeService } from "../../services/account-facade.service";
 
 @Component({
@@ -16,7 +17,8 @@ export class LoginComponent {
   get password() { return this.authForm.get('password'); }
 
   constructor(private accountFacade: AccountFacadeService,
-    private router: Router) {
+    private router: Router,
+    private toaster: ToastService) {
     if(this.accountFacade.isAuthenticated()) {
       this.router.navigate(['/']);
     }
@@ -44,11 +46,12 @@ export class LoginComponent {
     if(this.authForm.valid) {
       this.accountFacade.login(this.authForm.value).subscribe(
         tokens => {
+          this.toaster.showSuccess('Authification success!');
           this.router.navigate(['/']);
         },
         error => {
           if(error.status == 400) {
-            this.authForm?.setErrors({'auth': 'Email or password not correct!'})
+            this.toaster.showError('Email or password not correct!');
           }
         }
       );

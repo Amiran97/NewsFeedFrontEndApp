@@ -1,6 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
+import { ToastService } from "src/app/shared/services/toast-service.service";
 import { Comment } from "../../models/comment";
 import { CommentFacadeService } from "../../services/comment-facade.service";
 
@@ -18,7 +19,8 @@ export class CommentItemComponent implements OnInit, OnDestroy{
   isDisliked: boolean = false;
 
   constructor(public accountFacade: AccountFacadeService,
-    private commentFacade: CommentFacadeService) {}
+    private commentFacade: CommentFacadeService,
+    private toaster: ToastService) {}
 
 
   ngOnInit(): void {
@@ -33,7 +35,7 @@ export class CommentItemComponent implements OnInit, OnDestroy{
 
   deleteComment() {
     if(this.comment?.id) {
-      this.deleteSub = this.commentFacade.delete(this.comment.id).subscribe();
+      this.deleteSub = this.commentFacade.delete(this.comment.id).subscribe(num => this.toaster.showSuccess('Comment deleted!'));
     }
   }
 
