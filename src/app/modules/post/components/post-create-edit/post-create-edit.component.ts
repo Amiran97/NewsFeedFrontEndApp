@@ -5,7 +5,7 @@ import { AccountFacadeService } from "src/app/modules/account/services/account-f
 import { PostFacadeService } from "../../services/post-facade.service";
 import * as _ from 'lodash';
 import { environment } from "src/environments/environment";
-import { ToastService } from "src/app/shared/services/toast-service.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 
 @Component({
   selector: "app-post-create",

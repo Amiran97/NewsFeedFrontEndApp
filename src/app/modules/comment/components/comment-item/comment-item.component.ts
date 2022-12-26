@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from "@angular/core";
-import { Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
-import { ToastService } from "src/app/shared/services/toast-service.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 import { Comment } from "../../models/comment";
 import { CommentFacadeService } from "../../services/comment-facade.service";
 
