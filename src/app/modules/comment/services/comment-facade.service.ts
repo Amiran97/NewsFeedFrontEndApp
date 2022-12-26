@@ -34,6 +34,14 @@ export class CommentFacadeService {
         );
       }
 
+      like(id: number) : Observable<Comment> {
+        return this.commentApi.like(id);
+      }
+    
+      dislike(id: number) : Observable<Comment> {
+        return this.commentApi.dislike(id);
+      }
+
       private clear() {
         this.commentStorage.set([]);  
       }

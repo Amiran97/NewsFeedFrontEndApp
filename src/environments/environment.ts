@@ -9,6 +9,8 @@ export const environment = {
   ACCOUNT_API_URL: 'Auth',
   POST_API_URL: 'Post',
   COMMENT_API_URL: 'Comment',
+  POST_LIKE_API_URL: 'Like/Post',
+  COMMENT_LIKE_API_URL: 'Like/Comment',
   encryptSecretKey: 'd3b2cc0c-db8c-4dec-a25a-e1179ac30025'
 };
 

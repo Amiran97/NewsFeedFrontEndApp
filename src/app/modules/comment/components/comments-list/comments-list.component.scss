@@ -1,3 +1,16 @@
+.comment-container {
+    margin: 3rem auto;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
 .no-data {
     font-size: xx-large;
+}
+
+.skip-zone {
+    width: 50px;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none; 
 }

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
 import { Comment } from "../../models/comment";
 import { CommentRequest } from "../../models/comment-request";

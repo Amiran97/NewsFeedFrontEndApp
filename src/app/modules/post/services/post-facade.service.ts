@@ -40,6 +40,18 @@ export class PostFacadeService {
         );
       }
 
+      like(id: number) : Observable<Post> {
+        return this.postApi.like(id).pipe(
+          tap(data => this.postStorage.update(data))
+        );
+      }
+
+      dislike(id: number) : Observable<Post> {
+        return this.postApi.dislike(id).pipe(
+          tap(data => this.postStorage.update(data))
+        );
+      }
+
       private clear() {
         this.postStorage.set([]);  
       }

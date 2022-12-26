@@ -1,4 +1,4 @@
-.comment-card-wrapper.d-flex.flex-row-reverse.mt-3(*ngIf='comment')
+.comment-card-wrapper.d-flex.flex-row.mt-3(*ngIf='comment')
   .comment-card(style='width: 700px')
     .comment-card-header.d-flex
       h6.p-1.m-0 Author: {{ comment.authorName }}
@@ -7,15 +7,17 @@
       .body-content
         .content-text
           p {{ comment.message }}
-    .comment-card-footer.d-flex.py-2.pt-2
-      .footer-likes.mx-3.d-flex.align-items-center((click)='likeComment()')
-        i.bi.bi-heart-fill.me-2
-        span {{ comment.likes.length }}
+    .comment-card-footer.d-flex.py-2
+      .comment-card-footer-controls.d-flex.flex-row
+        button.btn.btn-light.ms-3((click)='ratingUp()', *ngIf='(!isLiked) && (accountFacade.isAuthenticated$() | async)')
+          i.bi.bi-caret-up-fill 
+        button.btn.btn-success.ms-3((click)='ratingUp()', *ngIf='isLiked && (accountFacade.isAuthenticated$() | async)')
+          i.bi.bi-caret-up-fill 
+        p.p-0.my-auto.ms-3 {{ comment.rating }}
+        button.btn.btn-light.ms-3((click)='ratingDown()', *ngIf='(!isDisliked) && (accountFacade.isAuthenticated$() | async)')
+          i.bi.bi-caret-down-fill
+        button.btn.btn-danger.ms-3((click)='ratingDown()', *ngIf='isDisliked && (accountFacade.isAuthenticated$() | async)')
+          i.bi.bi-caret-down-fill
       .footer-action-btns.d-flex.ms-auto.me-3(*ngIf='(accountFacade.account$ | async)?.username === comment.authorName')
         button.btn.btn-danger.ms-3.bi.bi-trash-fill((click)='deleteComment()')
-  .comment-card-left-controls.me-3.mt-2
-    button.btn.btn-light((click)='ratingUp()')
-      i.bi.bi-caret-up-fill
-    p.my-1.p-0 {{comment.likes.length}}
-    button.btn.btn-light((click)='ratingDown()')
-      i.bi.bi-caret-down-fill
+  

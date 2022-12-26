@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
+import { Comment } from "src/app/modules/comment/models/comment";
+import { CommentFacadeService } from "src/app/modules/comment/services/comment-facade.service";
 import { Post } from "src/app/modules/post/models/post";
 import { environment } from "src/environments/environment";
 import { PostFacadeService } from "../../services/post-facade.service";
@@ -16,26 +18,39 @@ export class PostItemComponent implements OnInit, OnDestroy {
   imageUrl: string = environment.IMAGE_URL;
   isCollapsed: boolean = false;
   isDetail: boolean = false;
+  isLiked: boolean = false;
+  isDisliked: boolean = false;
+  comments?: Comment[];
+
   private routeSub: any;
   private deleteSub: any;
+  private likeSub: any;
+  private dislikeSub: any;
+  private commentsSub: any;
 
   constructor(private router: Router,
     private route: ActivatedRoute,
     public accountFacade: AccountFacadeService,
-    private postFacade: PostFacadeService) {}
+    private postFacade: PostFacadeService,
+    private commentFacade: CommentFacadeService) {}
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
       let id = +params['id'];
       if(id) {
         this.isDetail = true;
+        this.commentsSub = this.commentFacade.comments$.subscribe(data => this.comments = data);
       }
     });
+    this.checkLikeStatus();
   }
 
   ngOnDestroy(): void {
     this.routeSub.unsubscribe();
     this.deleteSub?.unsubscribe();
+    this.likeSub?.unsubscribe();
+    this.dislikeSub?.unsubscribe();
+    this.commentsSub?.unsubscribe();
   }
 
   deletePost() {
@@ -75,13 +90,26 @@ export class PostItemComponent implements OnInit, OnDestroy {
   }
   
   ratingUp() {
-    console.log("Rating up");
+    if(this.post) {
+      this.likeSub = this.postFacade.like(this.post.id).subscribe(data => {
+        this.post = data;
+        this.checkLikeStatus();
+      });
+    }
   }
   ratingDown() {
-    console.log("Rating down");
+    if(this.post) {
+      this.dislikeSub = this.postFacade.dislike(this.post.id).subscribe(data => {
+        this.post = data;
+        this.checkLikeStatus();
+      });
+    }
   }
-  likePost() {
-    this.navigateToDetailClick();
-    console.log("Like Post");
+
+  private checkLikeStatus() {
+    this.accountFacade.account$.subscribe(account => {
+      this.isLiked = this.post?.likes.findIndex(l => l === account.username) !== -1;
+      this.isDisliked = this.post?.dislikes.findIndex(l => l === account.username) !== -1;
+    });
   }
 }

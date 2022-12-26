@@ -1,7 +1,11 @@
-.mb-5
-  app-comment-create([id]='id')
-  .comments(*ngIf="commentsList$ | async as commentsList", id="comments")
-    .comment-item.d-flex.justify-content-center(*ngFor='let comment of commentsList')
-      app-comment-item([comment]='comment')
-    .no-data.d-flex.justify-content-center.w-100(*ngIf='commentsList.length == 0')
-      span.px-2.py-2.border.rounded.bg-light.mt-3 No comments
+.comment-container.d-flex.flex-row.justify-content-center.mb-5
+  .skip-zone.me-3
+  .d-flex.flex-column
+    hr
+    h4.m-auto Comments
+    app-comment-create([id]='id', *ngIf='accountFacade.isAuthenticated$() | async')
+    .comments(*ngIf="commentsList$ | async as commentsList", id="comments")
+      .comment-item.d-flex.justify-content-center(*ngFor='let comment of commentsList')
+        app-comment-item([comment]='comment')
+      .no-data.d-flex.justify-content-center.w-100(*ngIf='commentsList.length == 0')
+        span.px-2.py-2.border.rounded.bg-light.mt-3 No comments
