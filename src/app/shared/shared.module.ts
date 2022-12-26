@@ -7,6 +7,9 @@ import { SideBarComponent } from "./components/side-bar/side-bar.component";
 import { AccountMenuComponent } from "./components/account-menu/account-menu.component";
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { ToastsContainer } from "./components/toast-container/toast-container.component";
+import { LoaderComponent } from "./components/loader/loader.component";
+import { LoaderInterceptorService } from "./services/loader-interseptor.service";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 
 @NgModule({
@@ -20,11 +23,16 @@ import { ToastsContainer } from "./components/toast-container/toast-container.co
     HeaderComponent,
     SideBarComponent,
     AccountMenuComponent,
-    ToastsContainer
+    ToastsContainer,
+    LoaderComponent,
   ],
   exports: [
     HeaderComponent,
     SideBarComponent,
+    LoaderComponent
   ],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } 
+  ]
 })
 export class SharedModule {}

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, TemplateRef } from '@angular/core';
-import { ToastService } from '../../services/toast-service.service';
+import { ToastService } from '../../services/toast.service';
 
 
 @Component({

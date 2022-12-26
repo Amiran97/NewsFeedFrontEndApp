@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AccountFacadeService } from 'src/app/modules/account/services/account-facade.service';
-import { ToastService } from '../../services/toast-service.service';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-account-menu',

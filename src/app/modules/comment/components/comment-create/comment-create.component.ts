@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
-import { ToastService } from "src/app/shared/services/toast-service.service";
-import { Comment } from "../../models/comment";
+import { ToastService } from "src/app/shared/services/toast.service";
 import { CommentRequest } from "../../models/comment-request";
 import { CommentFacadeService } from "../../services/comment-facade.service";
 

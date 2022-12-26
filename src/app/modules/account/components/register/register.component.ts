@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfirmValidator } from "src/app/core/validators/confirm.validator";
-import { ToastService } from "src/app/shared/services/toast-service.service";
+import { ToastService } from "src/app/shared/services/toast.service";
 import { AccountFacadeService } from "../../services/account-facade.service";
 
 @Component({
