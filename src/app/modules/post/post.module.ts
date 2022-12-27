@@ -8,6 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostDetailComponent } from './components/post-detail/post-detail.component';
 import { CommentModule } from '../comment/comment.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { CommentModule } from '../comment/comment.module';
     PostRoutingModule,
     ReactiveFormsModule,
     NgbModule,
-    CommentModule
+    CommentModule,
+    SharedModule
   ]
 })
 export class PostModule { }

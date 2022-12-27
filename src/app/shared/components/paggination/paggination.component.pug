@@ -1,0 +1,8 @@
+nav(*ngIf='data && data.totalCount > 0')
+  ul.pagination
+    li.page-item([class]="data.page <= 1 ? 'disabled' : ''")
+      a.page-link((click)='onPrevClick()') Previous
+    li.page-item(*ngFor="let item of [].constructor(data.totalPages); let i = index", [class]="data.page === (i+1) ? 'disabled' : ''")
+      a.page-link((click)='onClick(i+1)') {{ i+1 }}
+    li.page-item([class]="data.totalPages <= data.page ? 'disabled' : ''")
+      a.page-link((click)='onNextClick()') Next

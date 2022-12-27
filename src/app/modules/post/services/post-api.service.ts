@@ -15,8 +15,8 @@ export class PostApiService {
 
   constructor(private apiService: ApiService) { }
 
-  get(page: number) : Observable<PostsResponse> {
-    return this.apiService.get(`${this.apiUrl}?page=${page}`);
+  get(page: number, option: number) : Observable<PostsResponse> {
+    return this.apiService.get(`${this.apiUrl}?page=${page}&option=${option}`);
   }
 
   getById(id: number) : Observable<Post> {

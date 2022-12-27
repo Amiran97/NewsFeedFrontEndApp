@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { AccountFacadeService } from "src/app/modules/account/services/account-facade.service";
@@ -34,7 +35,8 @@ export class PostItemComponent implements OnInit, OnDestroy {
     public accountFacade: AccountFacadeService,
     private postFacade: PostFacadeService,
     private commentFacade: CommentFacadeService,
-    private toaster: ToastService) {}
+    private toaster: ToastService,
+    private location: Location) {}
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe(params => {
@@ -60,14 +62,16 @@ export class PostItemComponent implements OnInit, OnDestroy {
       this.deleteSub = this.postFacade.delete(this.post.id).subscribe(id => {
         if(this.isDetail) {
           this.toaster.showSuccess('Post deleted!');
-          this.router.navigate(['/']);
+          this.location.back();
+        } else {
+          window.location.reload();
         }
       });
     }
   }
 
   navigateToDetailClick() {
-    this.router.navigate(['/', this.post?.id]);
+    this.router.navigate(['/post/detail', this.post?.id]);
   }
 
   navigateToCommentPost() {
@@ -75,14 +79,14 @@ export class PostItemComponent implements OnInit, OnDestroy {
       if(this.isDetail) {
         document.querySelector("#comments")?.scrollIntoView();
       } else {
-        this.router.navigate(['/', this.post?.id], {fragment: 'comments'});
+        this.router.navigate(['/post/detail', this.post?.id], {fragment: 'comments'});
       }
     }
   }
 
   navigateToEditPost() {
     if(this.post?.id) {
-      this.router.navigate(['/edit', this.post?.id]);
+      this.router.navigate(['/post/edit', this.post?.id]);
     }
   }
 

@@ -37,7 +37,7 @@ export class TokenInterceptorService implements HttpInterceptor {
           }
         }
         else if (error.status == 404) {
-          this.router.navigate(['/']);
+          this.router.navigate(['..']);
           return next.handle(requestWithToken);
         }
         else {

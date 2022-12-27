@@ -10,6 +10,7 @@ import { ToastsContainer } from "./components/toast-container/toast-container.co
 import { LoaderComponent } from "./components/loader/loader.component";
 import { LoaderInterceptorService } from "./services/loader-interseptor.service";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { PagginationComponent } from "./components/paggination/paggination.component";
 
 
 @NgModule({
@@ -25,11 +26,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
     AccountMenuComponent,
     ToastsContainer,
     LoaderComponent,
+    PagginationComponent
   ],
   exports: [
     HeaderComponent,
     SideBarComponent,
-    LoaderComponent
+    LoaderComponent,
+    PagginationComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true } 

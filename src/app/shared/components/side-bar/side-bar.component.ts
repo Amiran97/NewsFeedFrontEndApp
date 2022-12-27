@@ -11,17 +11,14 @@ export class SideBarComponent implements OnInit {
       number: "1",
       name: "Newest",
       icon: "bi bi-newspaper",
+      href: "/post/newest/1"
     },
     {
       number: "2",
       name: "Popular",
       icon: "bi bi-arrow-up-right-circle",
-    },
-    {
-      number: "3",
-      name: "Favorite",
-      icon: "bi bi-heart-fill",
-    },
+      href: "/post/popular/1"
+    }
   ];
   @Output() sideNavToggled: EventEmitter<boolean> = new EventEmitter();
   isSideNavOpen: boolean = false;

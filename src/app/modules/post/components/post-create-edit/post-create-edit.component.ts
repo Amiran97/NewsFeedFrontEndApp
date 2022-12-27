@@ -6,6 +6,7 @@ import { PostFacadeService } from "../../services/post-facade.service";
 import * as _ from 'lodash';
 import { environment } from "src/environments/environment";
 import { ToastService } from "src/app/shared/services/toast.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-post-create",
@@ -32,11 +33,12 @@ export class PostCreateEditComponent implements OnInit{
     private accountFacade: AccountFacadeService,
     private router: Router,
     private route: ActivatedRoute,
-    private toaster: ToastService) {}
+    private toaster: ToastService,
+    private location: Location) {}
 
   ngOnInit(): void {
     if(!this.accountFacade.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.router.navigate(['post/']);
     }
     this.postForm = new FormGroup({
       title: new FormControl(null, [
@@ -105,7 +107,7 @@ export class PostCreateEditComponent implements OnInit{
         this.postFacade.create(formData).subscribe(
           () => {
             this.toaster.showSuccess('Post creaded!');
-            this.router.navigate(['/']);
+            this.location.back();
           },
           error => {
             if(error.status == 400) {
@@ -117,7 +119,7 @@ export class PostCreateEditComponent implements OnInit{
         this.postFacade.update(this.id, formData).subscribe(
           () => {
             this.toaster.showSuccess('Post updated!');
-            this.router.navigate(['/']);
+            this.location.back();
           },
           error => {
             if(error.status == 400) {

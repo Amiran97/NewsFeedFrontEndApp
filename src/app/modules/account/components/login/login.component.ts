@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -18,9 +19,10 @@ export class LoginComponent {
 
   constructor(private accountFacade: AccountFacadeService,
     private router: Router,
-    private toaster: ToastService) {
+    private toaster: ToastService,
+    private location: Location) {
     if(this.accountFacade.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.location.back();
     }
     this.authForm = new FormGroup({
       email: new FormControl(null, 
@@ -47,7 +49,7 @@ export class LoginComponent {
       this.accountFacade.login(this.authForm.value).subscribe(
         tokens => {
           this.toaster.showSuccess('Authification success!');
-          this.router.navigate(['/']);
+          this.location.back();
         },
         error => {
           if(error.status == 400) {

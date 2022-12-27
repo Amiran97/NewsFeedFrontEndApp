@@ -7,6 +7,6 @@
           i.bi.bi-arrow-left
         span Hide
     li.nav-list-item(*ngFor='let item of list')
-      a(href='#')
+      a([href]='item.href')
         i([class]='item.icon')
           span {{ item.name }}         

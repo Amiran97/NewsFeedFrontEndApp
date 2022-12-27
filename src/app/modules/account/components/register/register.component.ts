@@ -1,3 +1,4 @@
+import { Location } from "@angular/common";
 import { Component } from "@angular/core";
 import { Validators, FormGroup, FormControl } from "@angular/forms";
 import { Router } from "@angular/router";
@@ -21,9 +22,10 @@ export class RegisterComponent {
 
   constructor(private accountFacade: AccountFacadeService,
     private router: Router,
-    private toaster: ToastService) {
+    private toaster: ToastService,
+    private location: Location) {
     if(this.accountFacade.isAuthenticated()) {
-      this.router.navigate(['/']);
+      this.location.back();
     }
     this.registerForm = new FormGroup({
       userName: new FormControl(null, [
@@ -67,7 +69,7 @@ export class RegisterComponent {
       this.accountFacade.register(this.registerForm.value).subscribe(
         tokens => {
           this.toaster.showSuccess('New account created!')
-          this.router.navigate(['/']);
+          this.location.back();
         },
         error => {
           if(error.status == 400) {
